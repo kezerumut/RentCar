@@ -24,12 +24,13 @@ function CarsPage() {
       <h2>Mevcut Araçlar</h2>
       <div className="car-list">
         {dummyCars.map((car) => (
-          <CarCard
-            key={car.id}
-            image={car.image}
-            name={car.name}
-            price={car.price}
-          />
+         <CarCard
+  key={car.id}
+  id={car.id}
+  image={car.image}
+  name={car.name}
+  price={car.price}
+/>
         ))}
       </div>
     </div>

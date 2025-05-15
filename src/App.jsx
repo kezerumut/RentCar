@@ -4,6 +4,7 @@ import LoginPage from "./pages/Login";
 import RegisterPage from "./pages/Register";
 import Navbar from "./components/Navbar";
 import CarsPage from './pages/CarsPage';
+import CarDetailPage from "./pages/CarDetailPage";
 
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
   <Route path="/Login" element={<LoginPage />} />
   <Route path="/Register" element={<RegisterPage />} />
   <Route path="/cars" element={<CarsPage />} />
+  <Route path="/cars/:id" element={<CarDetailPage />} />
   
 </Routes>
 

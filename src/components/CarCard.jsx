@@ -1,12 +1,14 @@
-import React from 'react';
+import { Link } from "react-router-dom";
 
-function CarCard({ image, name, price }) {
+function CarCard({ id, image, name, price }) {
   return (
     <div className="car-card">
-      <img src={image} alt={name}/>
+      <img src={image} alt={name} />
       <h3>{name}</h3>
       <p>{price} ₺ / gün</p>
-      <button>Detaylar</button>
+      <Link to={`/cars/${id}`}>
+        <button>Detaylar</button>
+      </Link>
     </div>
   );
 }
