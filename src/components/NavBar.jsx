@@ -13,6 +13,11 @@ function Navbar({ user }) {
           <li><Link to="/">Homepage</Link></li>
         </ul>
       </nav>
+       <nav>
+        <ul className="nav-links">
+          <li><Link to="/cart">Sepet</Link></li>
+        </ul>
+      </nav>
 
       <div className="header-btn">
         {user ? (
