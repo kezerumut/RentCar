@@ -25,7 +25,13 @@ function CartPage() {
 
   return (
     <div className="cart-container">
+      <br />
+      <br />
+      <br />
+      <br />
       <h2>Sepetim</h2>
+       <br />
+      <br />
       {cartItems.length === 0 ? (
         <p>Sepetiniz boş.</p>
       ) : (
