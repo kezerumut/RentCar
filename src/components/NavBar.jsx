@@ -1,4 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
+import logo from '../img/logo.png'; 
 
 function Navbar({ user, setUser }) {
   const navigate = useNavigate();
@@ -11,9 +12,13 @@ function Navbar({ user, setUser }) {
   return (
     <header className="header">
       <nav>
+        <img src={logo} alt="RentCar Logo" className="logo" />
         <ul className="nav-links">
           <li><Link to="/">Homepage</Link></li>
           <li><Link to="/cars">Cars</Link></li>
+          <li><Link to="/cart">Cart</Link></li>
+          <li><Link to="/admin">admin</Link></li>
+          <li><Link to="/myrentals">My Rentals</Link></li>
         </ul>
       </nav>
 
@@ -25,8 +30,10 @@ function Navbar({ user, setUser }) {
           </>
         ) : (
           <>
-            <Link to="/login">Giriş Yap</Link>
-            <Link to="/register">Kayıt Ol</Link>
+            <div className="header-btn">
+                     <Link to="/login" className="btn">Login</Link>
+                     <Link to="/register" className="btn">Register</Link>
+                   </div>
           </>
         )}
       </div>

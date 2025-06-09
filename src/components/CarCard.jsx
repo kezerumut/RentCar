@@ -1,7 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
-function CarCard({ car, addToCart }) {
+function CarCard({ car, addToCart, user }) {
+
   const navigate = useNavigate();
 
   
@@ -21,7 +22,8 @@ function CarCard({ car, addToCart }) {
       <button onClick={() => navigate(`/car/${car.id}`)}>Detaylar</button>
 
       {addToCart && (
-        <button onClick={() => addToCart(car)}>Sepete Ekle</button>
+        <button onClick={() => addToCart(car, user)}>Sepete Ekle</button>
+
       )}
     </div>
   );

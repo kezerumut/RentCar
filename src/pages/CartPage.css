@@ -51,3 +51,9 @@
 .kirala-button:hover {
   background-color: #0056b3;
 }
+.cart-image {
+  width: 200px;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}

@@ -2,32 +2,13 @@ import React from 'react';
 import './HomePage.css';
 import CarCard from '../components/CarCard';
 import araba1 from '../img/arabalar.jpeg';
-import logo from '../img/logo.png'; 
+
 import { Link } from "react-router-dom";
 import Slider from "../components/Slider";
 
 function HomePage({ addToCart, cars }) {
   return (
     <div className="page-container">
-      <header className="header">
-        <img src={logo} alt="RentCar Logo" className="logo" />
-        <nav>
-          <ul className="nav-links">
-            <li><a href="#home">Home</a></li>
-            <li><a href="#services">Services</a></li>
-            <li><a href="#reviews">Reviews</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#profile">Profile</a></li> 
-            <li><Link to="/cart">Sepet</Link></li>
-              
-          </ul>
-        </nav>
-
-        <div className="header-btn">
-          <Link to="/login" className="btn">Login</Link>
-          <Link to="/register" className="btn">Register</Link>
-        </div>
-      </header>
       
       <main className="main-content" id='home'>
         <h1>Hayalinizdeki Aracı Kiralayın</h1>
