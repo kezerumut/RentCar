@@ -89,8 +89,7 @@ console.log("car:", car);
         <Route path="/cart" element={<CartPage cart={cart} user={user} />} />
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/rentals" element={<AdminRentals />} />
-        <Route path="/myrentals" element={<MyRentalsPage />} />
- 
+       <Route path="/myrentals" element={<MyRentalsPage user={user} />} />
 
       </Routes>
     </Router>

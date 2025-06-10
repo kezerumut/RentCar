@@ -5,28 +5,30 @@ function MyRentalsPage({ user }) {
   const [rentals, setRentals] = useState([]);
 
  useEffect(() => {
-  const user_id = localStorage.getItem("user_id");
+  if (!user || !user.id) return;
 
   fetch("http://localhost/rentcar-api/getRentals.php", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ user_id }),
-  })
-    .then((res) => res.json())
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({ user_id: user?.id })
+})
+    .then(res => res.json())
     .then((data) => {
       if (data.success) {
         setRentals(data.data);
       } else {
-        console.error("Veri alınamadı");
+        console.error("Veri alınamadı:", data.message); 
       }
     })
     .catch((err) => console.error(err));
 }, [user]);
+console.log("user id:", user?.id);
 
   return (
     <div className="orders-container">
+      
       <br /><br /><br /><br />
       <h2>Kiraladıklarım</h2>
       <br />
