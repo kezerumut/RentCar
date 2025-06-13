@@ -1,5 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import './CardPage.css';
+
 
 function CarCard({ car, addToCart, user }) {
 
@@ -17,7 +19,8 @@ function CarCard({ car, addToCart, user }) {
       <img src={car.image} alt={car.name} />
       <h3>{car.name}</h3>
       <p>{car.price} ₺ / gün</p>
-      <p>Yıl: {car.year}</p>
+      <p>Yıl: {car.year.slice(0, 4)}</p>
+
 
       <button onClick={() => navigate(`/car/${car.id}`)}>Detaylar</button>
 

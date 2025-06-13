@@ -10,13 +10,21 @@ import CartPage from './pages/CartPage';
 import AdminPage from './pages/AdminPage';
 import AdminRentals from './pages/AdminRentals';
 import MyRentalsPage from './pages/MyRentalsPage';
+import UserManagement from './pages/UserManagement';
+import './App.css';
 
 function App() {
   const [cars, setCars] = useState([]);
   const [cart, setCart] = useState([]);
   const [user, setUser] = useState(null);
 
-  
+  useEffect(() => {
+  const storedUser = localStorage.getItem("user");
+  if (storedUser) {
+    setUser(JSON.parse(storedUser));
+  }
+}, []);
+
 
   // ✅ Araçları API'den çek
   useEffect(() => {
@@ -90,6 +98,8 @@ console.log("car:", car);
         <Route path="/admin" element={<AdminPage />} />
         <Route path="/admin/rentals" element={<AdminRentals />} />
        <Route path="/myrentals" element={<MyRentalsPage user={user} />} />
+        <Route path="/users" element={<UserManagement />} />
+
 
       </Routes>
     </Router>

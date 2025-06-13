@@ -1,44 +1,96 @@
 .header {
-    background-color: #000000;
-    color: white;
-    padding: 15px 20px;
-    top: 0;
-    left: 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    height: 60px;
-    object-fit: contain;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 20px;
-  }
-  
-  .nav-links li a {
-    color: white;
-    text-decoration: none;
-  }
-  
-  .header-btn .btn {
-    margin-left: 10px;
-    padding: 8px 15px;
-    background-color: crimson;
-    color: white;
-    text-decoration: none;
-    border-radius: 5px;
-  }
-  .scroll-link {
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-  }
-  
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;          
+  background-color: #000;
+  display: flex;
+  align-items: center;     
+  justify-content: space-between;
+  padding: 0 40px;         
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(255, 0, 0, 0.2);
+}
+
+
+.header nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+
+.logo {
+  height: 100px;
+  cursor: pointer;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -5px;
+  left: 0;
+  background-color: #ff0000;
+  transition: width 0.3s ease;
+}
+
+.nav-links a:hover {
+  color: #ff0000;
+}
+
+.nav-links a:hover::after {
+  width: 100%;
+}
+
+.header-btn {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.header-btn span {
+  color: #fff;
+  font-weight: 500;
+}
+
+.header-btn button,
+.header-btn .btn {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s;
+}
+
+.header-btn button:hover,
+.header-btn .btn:hover {
+  background-color: #cc0000;
+}

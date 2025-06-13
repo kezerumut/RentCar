@@ -2,7 +2,6 @@ import React from 'react';
 import './HomePage.css';
 import CarCard from '../components/CarCard';
 import araba1 from '../img/arabalar.jpeg';
-
 import { Link } from "react-router-dom";
 import Slider from "../components/Slider";
 
@@ -18,7 +17,7 @@ function HomePage({ addToCart, cars }) {
         <p>En uygun fiyatlarla kaliteli araçlar burada.</p> 
         <div className="image-container">
           <img src={araba1} alt="home" />
-          <button className="image-button">Şimdi Kirala</button>
+           <Link to="/cars" className="image-button">Şimdi Kirala</Link>
         </div>
 
         <section className="car-list">
@@ -30,21 +29,22 @@ function HomePage({ addToCart, cars }) {
         <p>Burada kiralık araçlarla ilgili bilgiler olacak.</p>
       </main>
 
-      <section className="about" id="about">
-        <div className="heading">
-          <span>About Us</span>
-          <h1>Best Customer Experience</h1>
-        </div>
-        <div className="about-container">
-          <div className="about-img"></div>
-          <div className="about-text">
-            <span>About Us</span>
-            <p>Knight Online Hayat Offline</p>
-            <p>Knight Online Hayat Offline</p>
-            <a href="#" className="btn">Learn More</a>
-          </div>
-        </div>
-      </section>
+    <section className="about" id="about">
+  <div className="heading">
+    <h1>Who I Am & What This Project Is</h1>
+  </div>
+  <div className="about-container">
+    <div className="about-img">
+    </div>
+    <div className="about-text">
+      <span>Hello, I'm Umut Kezer</span>
+      <p>I'm a senior Computer Engineering student at Çukurova University. I have a strong interest in software development, especially in web technologies.</p>
+      <p>This car rental project is my graduation thesis project. I built a fully functional system with both user and admin panels using React, PHP, and MySQL.</p>
+      <a href="https://github.com/kezerumut" className="btn" target="_blank" rel="noopener noreferrer">Visit My GitHub</a>
+    </div>
+  </div>
+</section>
+
 
       <section className="reviews" id="reviews">
         <div className="heading">

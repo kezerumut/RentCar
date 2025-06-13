@@ -4,54 +4,52 @@ import './MyRentalsPage.css';
 function MyRentalsPage({ user }) {
   const [rentals, setRentals] = useState([]);
 
- useEffect(() => {
-  if (!user || !user.id) return;
+  useEffect(() => {
+    if (!user || !user.id) return;
 
-  fetch("http://localhost/rentcar-api/getRentals.php", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json"
-  },
-  body: JSON.stringify({ user_id: user?.id })
-})
-    .then(res => res.json())
-    .then((data) => {
-      if (data.success) {
-        setRentals(data.data);
-      } else {
-        console.error("Veri alınamadı:", data.message); 
-      }
+    fetch("http://localhost/rentcar-api/getRentals.php", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ user_id: user?.id })
     })
-    .catch((err) => console.error(err));
-}, [user]);
-console.log("user id:", user?.id);
+      .then(res => res.json())
+      .then((data) => {
+        if (data.success) {
+          setRentals(data.data);
+        } else {
+          console.error("Veri alınamadı:", data.message);
+        }
+      })
+      .catch((err) => console.error(err));
+  }, [user]);
 
   return (
     <div className="orders-container">
-      
-      <br /><br /><br /><br />
-      <h2>Kiraladıklarım</h2>
-      <br />
+      <h2 className="orders-title">Kiraladıklarım</h2>
       {rentals.length === 0 ? (
-        <p>Henüz bir kiralama yapmadınız.</p>
+        <p className="empty-message">Henüz bir kiralama yapmadınız.</p>
       ) : (
-        rentals.map((rental, i) => (
-          <div key={i} className="order-card">
-            <img
-              src={`http://localhost/rentcar-api/uploads/${rental.image}`}
-              alt={rental.car_name}
-              className="order-image"
-            />
-            <div>
-              <h3>{rental.car_name}</h3>
-              <p>Fiyat: {rental.price} ₺ / gün</p>
-              <p>Adres: {rental.adres}</p>
-              <p>Tarih: {rental.tarih}</p>
-              <p>Saat: {rental.saat}</p>
-              <p>Kiralama Zamanı: {rental.created_at}</p>
+        <div className="orders-grid">
+          {rentals.map((rental, i) => (
+            <div key={i} className="order-card">
+              <img
+                src={`http://localhost/rentcar-api/images/${rental.image}`}
+                alt={rental.car_name}
+                className="order-image"
+              />
+              <div className="order-details">
+                <h3>{rental.car_name}</h3>
+                <p><strong>Fiyat:</strong> {rental.price} ₺ / gün</p>
+                <p><strong>Adres:</strong> {rental.adres}</p>
+                <p><strong>Tarih:</strong> {rental.tarih}</p>
+                <p><strong>Saat:</strong> {rental.saat}</p>
+                <p><strong>Kiralama Zamanı:</strong> {rental.created_at}</p>
+              </div>
             </div>
-          </div>
-        ))
+          ))}
+        </div>
       )}
     </div>
   );

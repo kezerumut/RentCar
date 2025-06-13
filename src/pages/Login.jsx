@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './Login.css';
 
 function Login({ setUser }) {
@@ -8,56 +8,65 @@ function Login({ setUser }) {
   const navigate = useNavigate();
 
   const handleLogin = async () => {
-    console.log("Giriş denemesi:", username, password);
+    if (!username || !password) {
+      alert("Lütfen kullanıcı adı ve şifre girin.");
+      return;
+    }
 
-    const res = await fetch("http://localhost/rentcar-api/login.php", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ username, password }),
-  credentials: "include", // CORS için önemli
-})
+    try {
+      const res = await fetch("http://localhost/rentcar-api/login.php", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+        credentials: "include",
+      });
 
-    const data = await res.json();
-    console.log("API'den gelen:", data);
+      const data = await res.json();
+      console.log("API'den gelen:", data);
 
-    if (data.success) {
-      // ✅ id'yi de ekliyoruz!
-      const user = {
-        id: data.id,
-        username: data.username,
-        role: data.role
-      };
+      if (data.success) {
+        const user = {
+          id: data.id,
+          username: data.username,
+          role: data.role
+        };
 
-      setUser(user);
+        localStorage.setItem("user", JSON.stringify(user));
+        setUser(user);
 
-      if (user.role === "admin") {
-        navigate("/admin");
+        navigate(user.role === "admin" ? "/admin" : "/");
       } else {
-        navigate("/");
+        alert(data.message || "Giriş başarısız.");
       }
-    } else {
-      alert(data.message);
+    } catch (err) {
+      console.error("Giriş hatası:", err);
+      alert("Sunucuya bağlanılamadı.");
     }
   };
 
   return (
     <div className="login-container">
-      <h2>Giriş Yap</h2>
-      <input
-        type="text"
-        placeholder="Kullanıcı Adı"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        type="password"
-        placeholder="Şifre"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button onClick={handleLogin}>Giriş Yap</button>
+      <div className="login-box">
+        <h2>Giriş Yap</h2>
+        <input
+          type="text"
+          placeholder="Kullanıcı Adı"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Şifre"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <button onClick={handleLogin}>Giriş Yap</button>
+        <p>
+          Hesabınız yok mu? <Link to="/register">Kayıt Ol</Link>
+        </p>
+      </div>
     </div>
   );
 }

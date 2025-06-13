@@ -7,9 +7,6 @@ function AdminPage() {
   const [isEditing, setIsEditing] = useState(false);
 const [editId, setEditId] = useState(null);
 
-  
-
-  // Araçları çek
   useEffect(() => {
     fetch("http://localhost/rentcar-api/getCars.php")
       .then(res => res.json())

@@ -1,5 +1,7 @@
 import React from 'react';
 import CarCard from '../components/CarCard';
+import './CarsPage.css';
+
 
 function CarsPage({ cars, addToCart, user }) {
 

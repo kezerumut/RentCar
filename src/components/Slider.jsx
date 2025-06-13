@@ -3,6 +3,8 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/autoplay';
 import { Pagination, Autoplay } from 'swiper/modules';
+import './Slider.css';
+
 
 import araba1 from '../img/araba1.jpg';
 import araba2 from '../img/araba2.jpg';
@@ -18,7 +20,7 @@ function Slider() {
         pagination={{ clickable: true }}
         loop={true}
         autoplay={{
-          delay: 3000, // 3 saniyede bir değişsin
+          delay: 3000,
           disableOnInteraction: false,
         }}
       >
