@@ -132,12 +132,12 @@ function CartPage({ user }) {
   if (!user) {
     return (
       <div className="cart-container">
-        <h2>Sepetim</h2>
-        <p>Sepet görüntülemek için giriş yapmalısınız.</p>
+        <h2>My Cart</h2>
+        <p>You must be logged in to view your cart.</p>
         <div className="cart-action-links">
-          <Link to="/login" className="btn-link">Giriş Yap</Link>
-          <span> veya </span>
-          <Link to="/register" className="btn-link">Kayıt Ol</Link>
+          <Link to="/login" className="btn-link">Log in</Link>
+          <span> or </span>
+          <Link to="/register" className="btn-link">Register</Link>
         </div>
       </div>
     );
@@ -145,13 +145,13 @@ function CartPage({ user }) {
 
   return (
     <div className="cart-container">
-      <h2>Sepetim</h2>
+      <h2>My Cart</h2>
 
       {cartItems.length === 0 ? (
         <div className="empty-cart">
-          <p>Sepetinizde henüz araç yok.</p>
+          <p>There are no vehicles in your cart yet.</p>
           <button className="btn-primary" onClick={() => navigate('/cars')}>
-            Araçlara Göz At
+            Browse Vehicles
           </button>
         </div>
       ) : (
@@ -166,10 +166,10 @@ function CartPage({ user }) {
                 />
                 <div className="cart-item-details">
                   <h3 className="cart-item-title">{car.car_name}</h3>
-                  <p className="cart-item-price">{car.price} ₺ / gün</p>
+                  <p className="cart-item-price">{car.price} $ / day</p>
 
                   <div className="field-group">
-                    <label htmlFor={`adres-${car.id}`}>Adres:</label>
+                    <label htmlFor={`adres-${car.id}`}>Adress:</label>
                     <input
                       id={`adres-${car.id}`}
                       type="text"
@@ -179,7 +179,7 @@ function CartPage({ user }) {
                     />
                   </div>
                   <div className="field-group">
-                    <label htmlFor={`tarih-${car.id}`}>Tarih:</label>
+                    <label htmlFor={`tarih-${car.id}`}>Rental Date:</label>
                     <input
                       id={`tarih-${car.id}`}
                       type="date"
@@ -188,7 +188,7 @@ function CartPage({ user }) {
                     />
                   </div>
                   <div className="field-group">
-                    <label htmlFor={`saat-${car.id}`}>Saat:</label>
+                    <label htmlFor={`saat-${car.id}`}>Rental Hours:</label>
                     <input
                       id={`saat-${car.id}`}
                       type="time"
@@ -201,7 +201,7 @@ function CartPage({ user }) {
                     className="btn-remove"
                     onClick={() => handleRemove(car.id)}
                   >
-                    Sepetten Çıkar
+                      Remove from Cart
                   </button>
                 </div>
               </div>

@@ -18,14 +18,14 @@ function CarCard({ car, addToCart, user }) {
     <div className="car-card">
       <img src={car.image} alt={car.name} />
       <h3>{car.name}</h3>
-      <p>{car.price} ₺ / gün</p>
-      <p>Yıl: {car.year.slice(0, 4)}</p>
+      <p>{car.price} $ / day</p>
+      <p>Year: {car.year.slice(0, 4)}</p>
 
 
-      <button onClick={() => navigate(`/car/${car.id}`)}>Detaylar</button>
+      <button onClick={() => navigate(`/car/${car.id}`)}>Details</button>
 
       {addToCart && (
-        <button onClick={() => addToCart(car, user)}>Sepete Ekle</button>
+        <button onClick={() => addToCart(car, user)}>Add to Cart</button>
 
       )}
     </div>

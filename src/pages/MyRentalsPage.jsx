@@ -27,9 +27,9 @@ function MyRentalsPage({ user }) {
 
   return (
     <div className="orders-container">
-      <h2 className="orders-title">Kiraladıklarım</h2>
+      <h2 className="orders-title">My Rentals</h2>
       {rentals.length === 0 ? (
-        <p className="empty-message">Henüz bir kiralama yapmadınız.</p>
+        <p className="empty-message">You haven't made a lease yet.</p>
       ) : (
         <div className="orders-grid">
           {rentals.map((rental, i) => (
@@ -41,11 +41,11 @@ function MyRentalsPage({ user }) {
               />
               <div className="order-details">
                 <h3>{rental.car_name}</h3>
-                <p><strong>Fiyat:</strong> {rental.price} ₺ / gün</p>
-                <p><strong>Adres:</strong> {rental.adres}</p>
-                <p><strong>Tarih:</strong> {rental.tarih}</p>
-                <p><strong>Saat:</strong> {rental.saat}</p>
-                <p><strong>Kiralama Zamanı:</strong> {rental.created_at}</p>
+                <p><strong>Price:</strong> {rental.price} $ / day</p>
+                <p><strong>Adress:</strong> {rental.adres}</p>
+                <p><strong>Rental Date:</strong> {rental.tarih}</p>
+                <p><strong>Rental Hour:</strong> {rental.saat}</p>
+                <p><strong>Rental Time:</strong> {rental.created_at}</p>
               </div>
             </div>
           ))}

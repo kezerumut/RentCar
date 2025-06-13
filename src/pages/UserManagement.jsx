@@ -91,7 +91,7 @@ function UserManagement() {
 
 
   const deleteUser = (userId) => {
-    const confirmed = window.confirm("Bu kullanıcıyı silmek istediğinizden emin misiniz? Tüm ilişkili veriler kaybolabilir.");
+    const confirmed = window.confirm("Are you sure you want to delete this user? All associated data may be lost.");
     if (!confirmed) return;
 
     setDeleteLoadingIds(prev => new Set(prev).add(userId));
@@ -140,9 +140,9 @@ function UserManagement() {
 
   return (
     <div className="um-container">
-      <h2 className="um-title">Kullanıcılar</h2>
+      <h2 className="um-title">Users</h2>
       {users.length === 0 ? (
-        <p className="um-loading">Yükleniyor veya kullanıcı yok.</p>
+        <p className="um-loading">Loading or no user.</p>
       ) : (
         <div className="um-list">
           {users.map((user) => (
@@ -156,14 +156,14 @@ function UserManagement() {
                   className="um-btn um-btn-history"
                   onClick={() => openHistoryModal(user.id)}
                 >
-                  Geçmişi Göster
+                  Show History
                 </button>
                 <button
                   className="um-btn um-btn-delete"
                   onClick={() => deleteUser(user.id)}
                   disabled={deleteLoadingIds.has(user.id)}
                 >
-                  {deleteLoadingIds.has(user.id) ? "Siliniyor..." : "Kullanıcıyı Sil"}
+                  {deleteLoadingIds.has(user.id) ? "Deleting..." : "Delete User"}
                 </button>
               </div>
               {deleteErrorIds[user.id] && (
@@ -178,22 +178,22 @@ function UserManagement() {
         <div className="um-modal-overlay" onClick={closeHistoryModal}>
           <div className="um-modal-content" onClick={e => e.stopPropagation()}>
             <div className="um-modal-header">
-              <h3>#{modalUserId} Kullanıcı Geçmişi</h3>
+              <h3>#{modalUserId} User History</h3>
               <button className="um-modal-close" onClick={closeHistoryModal}>✕</button>
             </div>
             <div className="um-modal-body">
               {histories[modalUserId]?.loading ? (
-                <p>Yükleniyor...</p>
+                <p>Loading...</p>
               ) : histories[modalUserId]?.error ? (
                 <p className="um-history-error">Hata: {histories[modalUserId].error}</p>
               ) : histories[modalUserId]?.data && histories[modalUserId].data.length > 0 ? (
                 <table className="um-history-table">
                   <thead>
                     <tr>
-                      <th>Araba</th>
-                      <th>Tarih</th>
-                      <th>Saat</th>
-                      <th>Kiralama Zamanı</th>
+                      <th>Car</th>
+                      <th>Date</th>
+                      <th>Hour</th>
+                      <th>Rental Time</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -208,7 +208,7 @@ function UserManagement() {
                   </tbody>
                 </table>
               ) : (
-                <p>Hiç sipariş yok.</p>
+                <p>There are no orders.</p>
               )}
             </div>
           </div>

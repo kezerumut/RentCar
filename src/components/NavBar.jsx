@@ -22,13 +22,13 @@ setUser(null);
           <li><Link to="/cars">Cars</Link></li>
           <li><Link to="/cart">Cart</Link></li>
           {user && user.role === "admin" && (
-          <li><Link to="/admin">admin</Link></li>
+          <li><Link to="/admin">Admin Page</Link></li>
            )}
           {user && (
           <li><Link to="/myrentals">My Rentals</Link></li>
            )}
 {user && user.role === "admin" && (
-          <li><Link to="/users">Kullanıcı Yönetimi</Link></li>
+          <li><Link to="/users">User Management</Link></li>
            )}
         </ul>
       </nav>
@@ -36,8 +36,8 @@ setUser(null);
       <div className="header-btn">
         {user ? (
           <>
-            <span>Merhaba, {user.username}</span>
-            <button onClick={handleLogout}>Çıkış Yap</button>
+            <span>Hello, {user.username}</span>
+            <button onClick={handleLogout}>Log Out</button>
           </>
         ) : (
           <>

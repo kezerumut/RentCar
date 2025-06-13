@@ -68,35 +68,35 @@ const [editId, setEditId] = useState(null);
   return (
     <div className="admin-page">
       <div className="admin-form">
-        <h2>Yeni Araç Ekle</h2>
+        <h2>Add New Vehicles</h2>
         <form onSubmit={handleSubmit}>
-          <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Araç Adı" required />
-          <input type="number" name="price" value={form.price} onChange={handleChange} placeholder="Fiyat (₺)" required />
-          <input type="text" name="image" value={form.image} onChange={handleChange} placeholder="Resim Dosya Adı" required />
-          <input type="number" name="year" value={form.year} onChange={handleChange} placeholder="Model Yılı" required />
-          <button type="submit">Ekle</button>
+          <input type="text" name="name" value={form.name} onChange={handleChange} placeholder="Vehichle Name" required />
+          <input type="number" name="price" value={form.price} onChange={handleChange} placeholder="Price ($)" required />
+          <input type="text" name="image" value={form.image} onChange={handleChange} placeholder="Image File Name" required />
+          <input type="number" name="year" value={form.year} onChange={handleChange} placeholder="Model Year" required />
+          <button type="submit">ADD</button>
         </form>
       </div>
 
       <div className="admin-list">
-        <h2>Mevcut Araçlar</h2>
+        <h2>Available Tools</h2>
         <table>
           <thead>
             <tr>
-              <th>Ad</th>
-              <th>Fiyat</th>
-              <th>Yıl</th>
-              <th>İşlem</th>
+              <th>Name</th>
+              <th>Price</th>
+              <th>Year</th>
+              <th>Process</th>
             </tr>
           </thead>
           <tbody>
             {cars.map(car => (
               <tr key={car.id}>
                 <td>{car.name}</td>
-                <td>{car.price} ₺</td>
+                <td>{car.price} $</td>
                 <td>{car.year}</td>
                 <td>
-  <button onClick={() => deleteCar(car.id)}>Sil</button>
+  <button onClick={() => deleteCar(car.id)}>Delete</button>
   <button onClick={() => {
     setIsEditing(true);
     setEditId(car.id);
@@ -108,7 +108,7 @@ const [editId, setEditId] = useState(null);
     });
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }}>
-    Düzenle
+    Edit
   </button>
 </td>
               </tr>
