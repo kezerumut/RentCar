@@ -1,13 +1,31 @@
 # React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a full-stack **Car Rental Web Application** developed as a graduation project. It allows users to browse vehicles, add them to cart, rent them, and for admins to manage the system. Built using **React** for the frontend and **PHP + MySQL** for the backend.
 
-Currently, two official plugins are available:
+### 👤 **User Panel**
+- 🔐 User Login System
+- 🚗 View and Filter Available Cars
+- ❤️ Add to Cart and Rent
+- 📜 View Rental History
+- ✍ Leave Public Reviews (No login required)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### 🔧 **Admin Panel**
+- ➕ Add New Car (with Image & Year)
+- 📝 Edit Car Details
+- ❌ Delete Car
+- 📋 View All Cars
 
-## Expanding the ESLint configuration
+---
+
+## 💻 Technologies Used
+
+### Frontend:
+- React.js
+- CSS (Modern, Responsive Design)
+
+### Backend:
+- PHP (Vanilla)
+- MySQL (via XAMPP)
 
 If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
 <img width="1264" alt="Rentals" src="https://github.com/user-attachments/assets/8baae824-70f9-42a9-aebf-deacd764c302" />
