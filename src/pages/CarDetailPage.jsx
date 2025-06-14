@@ -12,7 +12,7 @@ function CarDetailPage({ cars, addToCart }) {
     <div className="car-detail">
       <h2>{car.name}</h2>
       <img src={car.image} alt={car.name} />
-      <p>Fiyat: {car.price} ₺ / gün</p>
+      <p>Fiyat: {car.price} $ / day</p>
       <p>Yıl: {car.year}</p>
       <button onClick={() => addToCart(car)}>Sepete Ekle</button>
     </div>

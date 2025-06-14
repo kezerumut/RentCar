@@ -10,64 +10,54 @@ function Register() {
   const handleRegister = (e) => {
     e.preventDefault();
     setMessage("");
-
     if (!username || !password || !confirmPassword) {
-      setMessage("Lütfen tüm alanları doldurun.");
-      return;
-    }
-
+      setMessage("Please fill in all fields.");
+      return;}
     if (password !== confirmPassword) {
-      setMessage("Şifreler eşleşmiyor.");
-      return;
-    }
-
+      setMessage("Passwords do not match.");
+      return;}
     fetch("http://localhost/rentcar-api/register.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ username, password }),
-    })
+      body: JSON.stringify({ username, password }),})
       .then((res) => res.json())
       .then((data) => {
         if (data.success) {
-          setMessage("Kayıt başarılı! Giriş yapabilirsiniz.");
+          setMessage("Registration successful! You can log in.");
           setUsername("");
           setPassword("");
           setConfirmPassword("");
         } else {
-          setMessage(data.message || "Kayıt başarısız.");
-        }
-      })
+          setMessage(data.message || "Registration failed.");}})
       .catch((err) => {
-        console.error("Kayıt hatası:", err);
-        setMessage("Bir hata oluştu.");
-      });
-  };
+        console.error("Registration error:", err);
+        setMessage("An error occurred.");});};
 
   return (
     <div className="register-container">
-      <h2>Kayıt Ol</h2>
+      <h2>Register      </h2>
       <form onSubmit={handleRegister}>
         <input
           type="text"
-          placeholder="Kullanıcı Adı"
+          placeholder="Username"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Şifre"
+          placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
           type="password"
-          placeholder="Şifreyi Tekrar Girin"
+          placeholder="Repeat password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
-        <button type="submit">Kayıt Ol</button>
+        <button type="submit">Register</button>
       </form>
       {message && <p className="register-message">{message}</p>}
     </div>

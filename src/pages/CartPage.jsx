@@ -22,14 +22,13 @@ function CartPage({ user }) {
           setCartItems(Array.isArray(data) ? data : []);
         })
         .catch(err => {
-          console.error("Sepet verisi alınamadı:", err);
+          console.error("Cart data could not be retrieved:", err);
           setCartItems([]);
         });
     } else {
       setCartItems([]);
     }
   }, [user]);
-
 
   const handleChange = (e, id, field) => {
     setDetails(prev => ({
@@ -40,7 +39,6 @@ function CartPage({ user }) {
       },
     }));
   };
-
 
   const handleRemove = (id) => {
     fetch("http://localhost/rentcar-api/removeFromCart.php", {
@@ -61,25 +59,22 @@ function CartPage({ user }) {
             return nxt;
           });
         } else {
-          alert("Silme işlemi başarısız: " + (data.message || ""));
+          alert("Deletion failed: " + (data.message || ""));
         }
       })
       .catch(err => {
-        console.error("Silme hatası:", err);
-        alert("Silme işlemi sırasında bir hata oluştu.");
+        console.error("Deletion Error:", err);
+        alert("An error occurred during the deletion process.");
       });
   };
-
   const handleRent = () => {
-
     for (const car of cartItems) {
       const det = details[car.id] || {};
       if (!det.adres || !det.tarih || !det.saat) {
-        alert(`Lütfen "${car.car_name}" için adres, tarih ve saat bilgilerini eksiksiz girin.`);
+        alert(`Please "${car.car_name}" Please enter the address, date and time information completely.`);
         return;
       }
     }
-
     const dataToSend = cartItems.map(car => ({
       id: car.id,
       car_name: car.car_name,
@@ -102,7 +97,7 @@ function CartPage({ user }) {
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          alert("Kiralama işlemi başarıyla gerçekleşti.");
+          alert("The rental transaction was completed successfully.");
       
           fetch("http://localhost/rentcar-api/clearCart.php", {
             method: "POST",
@@ -118,14 +113,14 @@ function CartPage({ user }) {
                 setDetails({});
               }
             })
-            .catch(err => console.error("Sepet temizleme hatası:", err));
+            .catch(err => console.error("Cart clear error:", err));
         } else {
           alert("Hata: " + (data.message || ""));
         }
       })
       .catch(err => {
-        console.error("Sunucu hatası:", err);
-        alert("Sunucu hatası meydana geldi.");
+        console.error("Server error:", err);
+        alert("A server error occurred.");
       });
   };
 
@@ -210,7 +205,7 @@ function CartPage({ user }) {
 
           <div className="checkout-section">
             <button className="btn-primary kirala-button" onClick={handleRent}>
-              Kirala
+              Rent
             </button>
           </div>
         </>

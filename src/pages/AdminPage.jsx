@@ -12,55 +12,45 @@ const [editId, setEditId] = useState(null);
       .then(res => res.json())
       .then(data => setCars(data));
   }, []);
-
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
+    setForm({ ...form, [e.target.name]: e.target.value });};
   const handleSubmit = (e) => {
   e.preventDefault();
-
   const endpoint = isEditing
     ? "http://localhost/rentcar-api/updateCar.php"
     : "http://localhost/rentcar-api/addCar.php";
-
   const payload = isEditing ? { ...form, id: editId } : form;
-
   fetch(endpoint, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(payload)
-  })
+    body: JSON.stringify(payload)})
     .then(res => res.json())
     .then(data => {
       if (data.success) {
-        alert(isEditing ? "Araç güncellendi" : "Araç eklendi");
+        alert(isEditing ? "Vehicle updated" : "Vehicle added");
         setForm({ name: "", price: "", image: "", year: "" });
         setIsEditing(false);
         setEditId(null);
         fetch("http://localhost/rentcar-api/getCars.php")
           .then(res => res.json())
           .then(data => setCars(data));
-      } else {
-        alert("Hata: " + data.message);
-      }
+        } 
+          else {alert("Error: " + data.message);}
     });
 };
-
   const deleteCar = (id) => {
-    if (!window.confirm("Silmek istediğinize emin misiniz?")) return;
+    if (!window.confirm("Are you sure you want to delete??")) return;
     fetch("http://localhost/rentcar-api/deleteCar.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id })
-    })
+      body: JSON.stringify({ id })})
       .then(res => res.json())
       .then(data => {
         if (data.success) {
-          alert("Araç silindi");
+          alert("Vehicle deleted");
           setCars(prev => prev.filter(car => car.id !== id));
         } else {
-          alert("Hata: " + data.message);
+          alert("Error: " + data.message);
         }
       });
   };

@@ -27,10 +27,10 @@ function UserManagement() {
         } else if (data.success && Array.isArray(data.data)) {
           setUsers(data.data);
         } else {
-          console.error("get_users beklenen formda dönmedi:", data);
+          console.error("get_users did not return the expected form:", data);
         }
       })
-      .catch(err => console.error("Kullanıcı çekme hatası:", err));
+      .catch(err => console.error("User pull error:", err));
   }, []);
 
   const fetchUserHistory = (userId) => {
@@ -49,8 +49,8 @@ function UserManagement() {
         const ct = res.headers.get("content-type") || "";
         if (!ct.includes("application/json")) {
           return res.text().then(txt => {
-            console.error("get_user_history JSON değil (user " + userId + "):", txt);
-            throw new Error("Beklenmeyen yanıt get_user_history");
+            console.error("get_user_history is not JSON (user " + userId + "):", txt);
+            throw new Error("Unexpected response get_user history");
           });
         }
         return res.json();
@@ -71,10 +71,10 @@ function UserManagement() {
         }
       })
       .catch(err => {
-        console.error("Sipariş geçmişi fetch hatası (user " + userId + "):", err);
+        console.error("Order history fetch error (user " + userId + "):", err);
         setHistories(prev => ({
           ...prev,
-          [userId]: { data: [], loading: false, error: err.message || "Hata oluştu" }
+          [userId]: { data: [], loading: false, error: err.message || "An error occurred" }
         }));
       });
   };
@@ -109,7 +109,7 @@ function UserManagement() {
         if (!ct.includes("application/json")) {
           return res.text().then(txt => {
             console.error("delete_user JSON değil:", txt);
-            throw new Error("Beklenmeyen yanıt delete_user");
+            throw new Error("Unexpected response delete_user");
           });
         }
         return res.json();

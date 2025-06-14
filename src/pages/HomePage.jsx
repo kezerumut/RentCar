@@ -11,7 +11,7 @@ function HomePage({ addToCart, cars }) {
   const [reviews, setReviews] = useState([]);
   const [reviewForm, setReviewForm] = useState({ name: "", comment: "" });
 
-  // Sayfa ilk yüklendiğinde localStorage'dan yorumları çek
+
   useEffect(() => {
     const savedReviews = localStorage.getItem("reviews");
     if (savedReviews) {
@@ -19,7 +19,6 @@ function HomePage({ addToCart, cars }) {
     }
   }, []);
 
-  // Her yorum eklendiğinde localStorage'a kaydet
   useEffect(() => {
     localStorage.setItem("reviews", JSON.stringify(reviews));
   }, [reviews]);
@@ -48,12 +47,15 @@ function HomePage({ addToCart, cars }) {
           <img src={araba1} alt="home" />
           <Link to="/cars" className="image-button">Now Rent</Link>
         </div>
+    <h1>Cars</h1>
+<div className="container">
+  <div className="row">
+    {cars.map((car) => (
+      <CarCard key={car.id} car={car} addToCart={addToCart} />
+    ))}
+  </div>
+</div>
 
-        <section className="car-list">
-          {cars.map((car) => (
-            <CarCard key={car.id} car={car} addToCart={addToCart} />
-          ))}
-        </section>
       </main>
 
       <section className="about" id="about">
@@ -74,7 +76,7 @@ function HomePage({ addToCart, cars }) {
 
       <section className="reviews" id="reviews">
         <div className="heading">
-          <span>Reviews</span>
+         
           <h1>What Our Visitors Say</h1>
         </div>
 
