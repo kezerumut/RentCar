@@ -6,22 +6,18 @@ function MyRentalsPage({ user }) {
 
   useEffect(() => {
     if (!user || !user.id) return;
-
     fetch("http://localhost/rentcar-api/getRentals.php", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
-      body: JSON.stringify({ user_id: user?.id })
-    })
+      body: JSON.stringify({ user_id: user?.id })    })
       .then(res => res.json())
       .then((data) => {
         if (data.success) {
           setRentals(data.data);
         } else {
-          console.error("Veri alınamadı:", data.message);
-        }
-      })
+          console.error("Veri alınamadı:", data.message);      }    })
       .catch((err) => console.error(err));
   }, [user]);
 

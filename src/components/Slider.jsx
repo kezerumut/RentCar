@@ -6,9 +6,9 @@ import { Pagination, Autoplay } from 'swiper/modules';
 import './Slider.css';
 
 
-import araba1 from '../img/araba1.jpg';
-import araba2 from '../img/araba2.jpg';
-import araba3 from '../img/araba3.jpg';
+import car1 from '../img/araba1.jpg';
+import car2 from '../img/araba2.jpg';
+import car3 from '../img/araba3.jpg';
 
 function Slider() {
   return (
@@ -24,9 +24,9 @@ function Slider() {
           disableOnInteraction: false,
         }}
       >
-        <SwiperSlide><img src={araba1} alt="Araba 1" /></SwiperSlide>
-        <SwiperSlide><img src={araba2} alt="Araba 2" /></SwiperSlide>
-        <SwiperSlide><img src={araba3} alt="Araba 3" /></SwiperSlide>
+        <SwiperSlide><img src={car1} alt="Car 1" /></SwiperSlide>
+        <SwiperSlide><img src={car2} alt="Car 2" /></SwiperSlide>
+        <SwiperSlide><img src={car3} alt="Car 3" /></SwiperSlide>
       </Swiper>
     </div>
   );

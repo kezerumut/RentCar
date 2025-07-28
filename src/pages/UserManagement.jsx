@@ -108,7 +108,7 @@ function UserManagement() {
         const ct = res.headers.get("content-type") || "";
         if (!ct.includes("application/json")) {
           return res.text().then(txt => {
-            console.error("delete_user JSON değil:", txt);
+            console.error("delete_user is not JSON:", txt);
             throw new Error("Unexpected response delete_user");
           });
         }

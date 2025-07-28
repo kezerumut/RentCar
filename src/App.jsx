@@ -25,8 +25,6 @@ function App() {
   }
 }, []);
 
-
-  // ✅ Araçları API'den çek
   useEffect(() => {
     fetch("http://localhost/rentcar-api/getCars.php")
       .then(res => res.json())
@@ -35,7 +33,7 @@ function App() {
   }, []);
 
  const addToCart = (car, user) => {
-  console.log("car:", car); // 👈 kontrol
+  console.log("car:", car);
 
   if (!user || !user.id) {
     alert("Giriş yapmadan sepete ekleyemezsiniz.");

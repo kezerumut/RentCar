@@ -67,6 +67,7 @@ function CartPage({ user }) {
         alert("An error occurred during the deletion process.");
       });
   };
+
   const handleRent = () => {
     for (const car of cartItems) {
       const det = details[car.id] || {};
@@ -90,10 +91,8 @@ function CartPage({ user }) {
     fetch("http://localhost/rentcar-api/rentCar.php", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify(dataToSend)
-    })
+        "Content-Type": "application/json"     },
+      body: JSON.stringify(dataToSend)   })
       .then(res => res.json())
       .then(data => {
         if (data.success) {
@@ -102,22 +101,16 @@ function CartPage({ user }) {
           fetch("http://localhost/rentcar-api/clearCart.php", {
             method: "POST",
             headers: {
-              "Content-Type": "application/json"
-            },
-            body: JSON.stringify({ user_id: user.id })
-          })
+              "Content-Type": "application/json"            },
+            body: JSON.stringify({ user_id: user.id })          })
             .then(res => res.json())
             .then(resp => {
               if (resp.success) {
                 setCartItems([]);
-                setDetails({});
-              }
-            })
+                setDetails({});              } })
             .catch(err => console.error("Cart clear error:", err));
         } else {
-          alert("Hata: " + (data.message || ""));
-        }
-      })
+          alert("Hata: " + (data.message || ""));        }      })
       .catch(err => {
         console.error("Server error:", err);
         alert("A server error occurred.");

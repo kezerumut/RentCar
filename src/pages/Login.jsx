@@ -9,7 +9,7 @@ function Login({ setUser }) {
 
   const handleLogin = async () => {
     if (!username || !password) {
-      alert("Lütfen kullanıcı adı ve şifre girin.");
+      alert("Please enter your username and password.");
       return;
     }
 
